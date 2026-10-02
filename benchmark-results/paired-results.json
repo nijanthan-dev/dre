@@ -1,0 +1,530 @@
+[
+  {
+    "variant": "baseline",
+    "sample": 1,
+    "sha": "8970f305d3ce5be284bdf69fc1c708ca279a18c1",
+    "runner_image": "ubuntu24",
+    "runner_image_version": "20260927.320.1",
+    "cpu_count": 4,
+    "kernel": "6.17.0-1022-azure",
+    "phases": [
+      {
+        "name": "go-test",
+        "command": [
+          "go",
+          "test",
+          "./..."
+        ],
+        "wall_seconds": 51.94,
+        "exit_code": 0
+      },
+      {
+        "name": "go-build",
+        "command": [
+          "go",
+          "build",
+          "-o",
+          "/home/runner/work/_temp/dre-74-baseline-go-plugins/dre-plugin-databricks",
+          "."
+        ],
+        "wall_seconds": 1.322,
+        "exit_code": 0
+      },
+      {
+        "name": "cargo-build",
+        "command": [
+          "cargo",
+          "build",
+          "--workspace",
+          "--bins"
+        ],
+        "wall_seconds": 652.601,
+        "exit_code": 0
+      },
+      {
+        "name": "cargo-test",
+        "command": [
+          "cargo",
+          "test",
+          "--workspace",
+          "--no-fail-fast"
+        ],
+        "wall_seconds": 442.288,
+        "exit_code": 0
+      }
+    ],
+    "peak_target_bytes": 41742376960,
+    "outcome": "success",
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1",
+    "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+    "go": "go version go1.27.1 linux/amd64",
+    "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+    "memory_total_kib": 16373452,
+    "initial_free_bytes": 91093381120,
+    "target_bytes": 41742376960,
+    "deps_bytes": 35165990912,
+    "binaries": [
+      {
+        "path": "debug/deps/run_xlsx_formats-98c791d622f6fb4b",
+        "bytes": 760669688,
+        "nm_exit_code": 0,
+        "duckdb_symbols": true
+      },
+      {
+        "path": "debug/deps/output-0028f52a66f96423",
+        "bytes": 719959824,
+        "nm_exit_code": 0,
+        "duckdb_symbols": true
+      },
+      {
+        "path": "debug/deps/templates_profiles-83fbfbd7b5dccfe1",
+        "bytes": 719368056,
+        "nm_exit_code": 0,
+        "duckdb_symbols": true
+      }
+    ]
+  },
+  {
+    "variant": "baseline",
+    "sample": 3,
+    "sha": "8970f305d3ce5be284bdf69fc1c708ca279a18c1",
+    "runner_image": "ubuntu24",
+    "runner_image_version": "20260927.320.1",
+    "cpu_count": 4,
+    "kernel": "6.17.0-1022-azure",
+    "phases": [
+      {
+        "name": "go-test",
+        "command": [
+          "go",
+          "test",
+          "./..."
+        ],
+        "wall_seconds": 54.676,
+        "exit_code": 0
+      },
+      {
+        "name": "go-build",
+        "command": [
+          "go",
+          "build",
+          "-o",
+          "/home/runner/work/_temp/dre-74-baseline-go-plugins/dre-plugin-databricks",
+          "."
+        ],
+        "wall_seconds": 1.371,
+        "exit_code": 0
+      },
+      {
+        "name": "cargo-build",
+        "command": [
+          "cargo",
+          "build",
+          "--workspace",
+          "--bins"
+        ],
+        "wall_seconds": 685.073,
+        "exit_code": 0
+      },
+      {
+        "name": "cargo-test",
+        "command": [
+          "cargo",
+          "test",
+          "--workspace",
+          "--no-fail-fast"
+        ],
+        "wall_seconds": 449.685,
+        "exit_code": 0
+      }
+    ],
+    "peak_target_bytes": 41742405632,
+    "outcome": "success",
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1",
+    "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+    "go": "go version go1.27.1 linux/amd64",
+    "cpu_model": "AMD EPYC 7763 64-Core Processor",
+    "memory_total_kib": 16373448,
+    "initial_free_bytes": 91093372928,
+    "target_bytes": 41742401536,
+    "deps_bytes": 35166003200,
+    "binaries": [
+      {
+        "path": "debug/deps/run_xlsx_formats-98c791d622f6fb4b",
+        "bytes": 760669688,
+        "nm_exit_code": 0,
+        "duckdb_symbols": true
+      },
+      {
+        "path": "debug/deps/output-0028f52a66f96423",
+        "bytes": 719959824,
+        "nm_exit_code": 0,
+        "duckdb_symbols": true
+      },
+      {
+        "path": "debug/deps/templates_profiles-83fbfbd7b5dccfe1",
+        "bytes": 719368056,
+        "nm_exit_code": 0,
+        "duckdb_symbols": true
+      }
+    ]
+  },
+  {
+    "variant": "implementation",
+    "sample": 2,
+    "sha": "f5c642c41fc944f4f9c451d579dca2346b37abde",
+    "runner_image": "ubuntu24",
+    "runner_image_version": "20260927.320.1",
+    "cpu_count": 4,
+    "kernel": "6.17.0-1022-azure",
+    "phases": [
+      {
+        "name": "go-test",
+        "command": [
+          "go",
+          "test",
+          "./..."
+        ],
+        "wall_seconds": 53.638,
+        "exit_code": 0
+      },
+      {
+        "name": "go-build",
+        "command": [
+          "go",
+          "build",
+          "-o",
+          "/home/runner/work/_temp/dre-74-implementation-go-plugins/dre-plugin-databricks",
+          "."
+        ],
+        "wall_seconds": 1.374,
+        "exit_code": 0
+      },
+      {
+        "name": "cargo-build",
+        "command": [
+          "cargo",
+          "build",
+          "--workspace",
+          "--bins"
+        ],
+        "wall_seconds": 547.321,
+        "exit_code": 0
+      },
+      {
+        "name": "cargo-test",
+        "command": [
+          "cargo",
+          "test",
+          "--workspace",
+          "--no-fail-fast"
+        ],
+        "wall_seconds": 346.081,
+        "exit_code": 0
+      }
+    ],
+    "peak_target_bytes": 19808985088,
+    "outcome": "success",
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1",
+    "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+    "go": "go version go1.27.1 linux/amd64",
+    "cpu_model": "AMD EPYC 7763 64-Core Processor",
+    "memory_total_kib": 16373452,
+    "initial_free_bytes": 91093426176,
+    "target_bytes": 19808976896,
+    "deps_bytes": 16828944384,
+    "binaries": [
+      {
+        "path": "debug/deps/run_xlsx_formats-46732847f300ae24",
+        "bytes": 70747080,
+        "nm_exit_code": 0,
+        "duckdb_symbols": false
+      },
+      {
+        "path": "debug/deps/output-9561130b45f58420",
+        "bytes": 29542592,
+        "nm_exit_code": 0,
+        "duckdb_symbols": false
+      },
+      {
+        "path": "debug/deps/templates_profiles-f0a8c0be791f2e95",
+        "bytes": 27843448,
+        "nm_exit_code": 0,
+        "duckdb_symbols": false
+      },
+      {
+        "path": "debug/deps/duckdb_seed-815b74a985903648",
+        "bytes": 27434800,
+        "nm_exit_code": 0,
+        "duckdb_symbols": false
+      }
+    ]
+  },
+  {
+    "variant": "implementation",
+    "sample": 3,
+    "sha": "f5c642c41fc944f4f9c451d579dca2346b37abde",
+    "runner_image": "ubuntu24",
+    "runner_image_version": "20260927.320.1",
+    "cpu_count": 4,
+    "kernel": "6.17.0-1022-azure",
+    "phases": [
+      {
+        "name": "go-test",
+        "command": [
+          "go",
+          "test",
+          "./..."
+        ],
+        "wall_seconds": 55.136,
+        "exit_code": 0
+      },
+      {
+        "name": "go-build",
+        "command": [
+          "go",
+          "build",
+          "-o",
+          "/home/runner/work/_temp/dre-74-implementation-go-plugins/dre-plugin-databricks",
+          "."
+        ],
+        "wall_seconds": 1.571,
+        "exit_code": 0
+      },
+      {
+        "name": "cargo-build",
+        "command": [
+          "cargo",
+          "build",
+          "--workspace",
+          "--bins"
+        ],
+        "wall_seconds": 570.031,
+        "exit_code": 0
+      },
+      {
+        "name": "cargo-test",
+        "command": [
+          "cargo",
+          "test",
+          "--workspace",
+          "--no-fail-fast"
+        ],
+        "wall_seconds": 350.218,
+        "exit_code": 0
+      }
+    ],
+    "peak_target_bytes": 19809013760,
+    "outcome": "success",
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1",
+    "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+    "go": "go version go1.27.1 linux/amd64",
+    "cpu_model": "AMD EPYC 7763 64-Core Processor",
+    "memory_total_kib": 16373448,
+    "initial_free_bytes": 88047079424,
+    "target_bytes": 19809009664,
+    "deps_bytes": 16828997632,
+    "binaries": [
+      {
+        "path": "debug/deps/run_xlsx_formats-46732847f300ae24",
+        "bytes": 70747080,
+        "nm_exit_code": 0,
+        "duckdb_symbols": false
+      },
+      {
+        "path": "debug/deps/output-9561130b45f58420",
+        "bytes": 29542592,
+        "nm_exit_code": 0,
+        "duckdb_symbols": false
+      },
+      {
+        "path": "debug/deps/templates_profiles-f0a8c0be791f2e95",
+        "bytes": 27843448,
+        "nm_exit_code": 0,
+        "duckdb_symbols": false
+      },
+      {
+        "path": "debug/deps/duckdb_seed-815b74a985903648",
+        "bytes": 27434800,
+        "nm_exit_code": 0,
+        "duckdb_symbols": false
+      }
+    ]
+  },
+  {
+    "variant": "baseline",
+    "sample": 2,
+    "sha": "8970f305d3ce5be284bdf69fc1c708ca279a18c1",
+    "runner_image": "ubuntu24",
+    "runner_image_version": "20260927.320.1",
+    "cpu_count": 4,
+    "kernel": "6.17.0-1022-azure",
+    "phases": [
+      {
+        "name": "go-test",
+        "command": [
+          "go",
+          "test",
+          "./..."
+        ],
+        "wall_seconds": 53.81,
+        "exit_code": 0
+      },
+      {
+        "name": "go-build",
+        "command": [
+          "go",
+          "build",
+          "-o",
+          "/home/runner/work/_temp/dre-74-baseline-go-plugins/dre-plugin-databricks",
+          "."
+        ],
+        "wall_seconds": 1.473,
+        "exit_code": 0
+      },
+      {
+        "name": "cargo-build",
+        "command": [
+          "cargo",
+          "build",
+          "--workspace",
+          "--bins"
+        ],
+        "wall_seconds": 674.192,
+        "exit_code": 0
+      },
+      {
+        "name": "cargo-test",
+        "command": [
+          "cargo",
+          "test",
+          "--workspace",
+          "--no-fail-fast"
+        ],
+        "wall_seconds": 443.516,
+        "exit_code": 0
+      }
+    ],
+    "peak_target_bytes": 41742389248,
+    "outcome": "success",
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1",
+    "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+    "go": "go version go1.27.1 linux/amd64",
+    "cpu_model": "AMD EPYC 7763 64-Core Processor",
+    "memory_total_kib": 16373452,
+    "initial_free_bytes": 88046936064,
+    "target_bytes": 41742389248,
+    "deps_bytes": 35165995008,
+    "binaries": [
+      {
+        "path": "debug/deps/run_xlsx_formats-98c791d622f6fb4b",
+        "bytes": 760669688,
+        "nm_exit_code": 0,
+        "duckdb_symbols": true
+      },
+      {
+        "path": "debug/deps/output-0028f52a66f96423",
+        "bytes": 719959824,
+        "nm_exit_code": 0,
+        "duckdb_symbols": true
+      },
+      {
+        "path": "debug/deps/templates_profiles-83fbfbd7b5dccfe1",
+        "bytes": 719368056,
+        "nm_exit_code": 0,
+        "duckdb_symbols": true
+      }
+    ]
+  },
+  {
+    "variant": "implementation",
+    "sample": 1,
+    "sha": "f5c642c41fc944f4f9c451d579dca2346b37abde",
+    "runner_image": "ubuntu24",
+    "runner_image_version": "20260927.320.1",
+    "cpu_count": 4,
+    "kernel": "6.17.0-1022-azure",
+    "phases": [
+      {
+        "name": "go-test",
+        "command": [
+          "go",
+          "test",
+          "./..."
+        ],
+        "wall_seconds": 54.898,
+        "exit_code": 0
+      },
+      {
+        "name": "go-build",
+        "command": [
+          "go",
+          "build",
+          "-o",
+          "/home/runner/work/_temp/dre-74-implementation-go-plugins/dre-plugin-databricks",
+          "."
+        ],
+        "wall_seconds": 1.524,
+        "exit_code": 0
+      },
+      {
+        "name": "cargo-build",
+        "command": [
+          "cargo",
+          "build",
+          "--workspace",
+          "--bins"
+        ],
+        "wall_seconds": 528.247,
+        "exit_code": 0
+      },
+      {
+        "name": "cargo-test",
+        "command": [
+          "cargo",
+          "test",
+          "--workspace",
+          "--no-fail-fast"
+        ],
+        "wall_seconds": 374.285,
+        "exit_code": 0
+      }
+    ],
+    "peak_target_bytes": 19809005568,
+    "outcome": "success",
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1",
+    "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+    "go": "go version go1.27.1 linux/amd64",
+    "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+    "memory_total_kib": 16373452,
+    "initial_free_bytes": 88047112192,
+    "target_bytes": 19808997376,
+    "deps_bytes": 16829001728,
+    "binaries": [
+      {
+        "path": "debug/deps/run_xlsx_formats-46732847f300ae24",
+        "bytes": 70747080,
+        "nm_exit_code": 0,
+        "duckdb_symbols": false
+      },
+      {
+        "path": "debug/deps/output-9561130b45f58420",
+        "bytes": 29542592,
+        "nm_exit_code": 0,
+        "duckdb_symbols": false
+      },
+      {
+        "path": "debug/deps/templates_profiles-f0a8c0be791f2e95",
+        "bytes": 27843448,
+        "nm_exit_code": 0,
+        "duckdb_symbols": false
+      },
+      {
+        "path": "debug/deps/duckdb_seed-815b74a985903648",
+        "bytes": 27434800,
+        "nm_exit_code": 0,
+        "duckdb_symbols": false
+      }
+    ]
+  }
+]
