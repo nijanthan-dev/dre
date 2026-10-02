@@ -30,9 +30,24 @@ def compare(root):
     valid = len(records) == 6 and all(r['outcome'] == 'success' for r in records)
     valid = valid and all(sorted(r['sample'] for r in records if r['variant'] == v) == [1, 2, 3]
                           for v in ['baseline', 'implementation'])
-    keys = ['runner_image', 'runner_image_version', 'rustc', 'cargo', 'go', 'cpu_count', 'cpu_model', 'memory_total_kib', 'kernel']
+    keys = ['runner_image', 'runner_image_version', 'rustc', 'cargo', 'go', 'cpu_count', 'kernel']
     valid = valid and all(len({str(r.get(k)) for r in records}) == 1 for k in keys)
+    # Each baseline/implementation pair runs on the same VM. Across pairs the
+    # hosted CPU models may differ; report paired improvements as well as medians.
+    for sample in [1, 2, 3]:
+        pair = [r for r in records if r['sample'] == sample]
+        valid = valid and len(pair) == 2 and all(len({str(r.get(k)) for r in pair}) == 1
+            for k in ['cpu_model', 'memory_total_kib'])
     if valid:
+        paired = []
+        for sample in [1, 2, 3]:
+            pair = {r['variant']: r for r in records if r['sample'] == sample}
+            times = {v: next(p['wall_seconds'] for p in r['phases'] if p['name'] == 'cargo-test') for v, r in pair.items()}
+            gain = (1-times['implementation']/times['baseline'])*100
+            paired.append(gain)
+            lines.append(f"\nPair {sample}: {pair['baseline']['cpu_model']}; test improvement {gain:.2f}%.")
+        lines.append(f"\nMedian hardware-matched paired improvement: {statistics.median(paired):.2f}%. Target >=25%: {statistics.median(paired) >= 25}.")
+        lines.append('\nPair 2 ran implementation first; pairs 1 and 3 ran baseline first. Each variant used a fresh target and fresh Cargo/Go caches.')
         values = {}
         for v in ['baseline', 'implementation']:
             group = [r for r in records if r['variant'] == v]
