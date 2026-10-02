@@ -65,7 +65,7 @@ Each pair ran both pinned commits on the same Ubuntu 24.04 VM with Rust 1.99.0, 
 Benchmark run: https://github.com/nijanthan-dev/dre/actions/runs/37014716840
 Full measurements and methodology: https://github.com/nijanthan-dev/dre/blob/bench/74-uncached-comparison/benchmark-results/issue-74.md
 
-Later upstream CI cache/debug changes were merged into the PR after choosing the benchmark SHAs. The benchmark remains pinned to the pre-merge commits to isolate this change, and does not claim a current-head comparison.
+Later upstream CI cache/debug and plugin-manager optimization changes were merged into the PR after choosing the benchmark SHAs. The benchmark remains pinned to the pre-merge commits to isolate this change, and does not claim a current-head comparison.
 
 An initial native-debug measurement was invalidated by the disk monitor racing
 Cargo temporary-file deletion; the monitor was corrected and the reported final
@@ -133,9 +133,9 @@ plugin protocol, package versions, and release profile are unchanged.
 Upstream and fork default branches are named master, not main. This PR targets
 get-dre/dre:master from nijanthan-dev:fix/74-duckdb-test-helper, originally based on
 8970f305d3ce5be284bdf69fc1c708ca279a18c1 and now merged with upstream
-c9d9f3795e169adf858b05279c5125898809951f. Fork/master matches that latest upstream
-SHA. Current task head is bac330813a6745c9c6300c4c1d8b29241bf37690. Maintainer @allenhori approved the helper boundary. The recorded acceptance
-limitations remain explicit. All CI jobs reached success on PR #81 at head bac330813a6745c9c6300c4c1d8b29241bf37690: Ubuntu, macOS, Windows, strict lint, service integration, schema docs, plugin versions, Skills, and CLA. CI run: https://github.com/get-dre/dre/actions/runs/37015614019. Skills run: https://github.com/get-dre/dre/actions/runs/37015614020. @allenhori approved the PR. No blocking review threads remain.
+5f57dae77b9aa66ca1f9175983de8ca2b76ba30a. Fork/master matches that latest upstream
+SHA. Current task head is 902feb31746d81cc4993e8fc36daaf42711707d2. Maintainer @allenhori approved the helper boundary. The recorded acceptance
+limitations remain explicit. Latest Ubuntu, macOS, strict lint, service integration, schema docs, plugin versions, Skills, and CLA checks passed. Windows failed in the unchanged plugin_sources localhost fixture with Peer disconnected; its DuckDB helper tests passed. The attempted upstream Windows rerun was rejected with HTTP 403 and requires an authorized mobile rerun. Previous merged head bac330813a6745c9c6300c4c1d8b29241bf37690 passed every CI job. CI run: https://github.com/get-dre/dre/actions/runs/37019915464. Skills run: https://github.com/get-dre/dre/actions/runs/37019914774. @allenhori approved the PR. No blocking review threads remain.
 
 ## Checklist
 
@@ -147,4 +147,4 @@ limitations remain explicit. All CI jobs reached success on PR #81 at head bac33
 - [x] Plugin version bump: n/a, no plugin source or release behavior changed
 - [x] Existing CLA signature confirmed by the upstream CLA check; no new signature made by this task
 
-Latest merged-head Ubuntu CI reported 473 passing tests, zero failures, and zero ignored tests. Full PR CI passed on Ubuntu, macOS, and Windows. The synced fork master CI also passed.
+Previous merged-head Ubuntu CI reported 473 passing tests, zero failures, and zero ignored tests. Latest PR Ubuntu and macOS workspace tests passed; latest Windows requires a rerun as described above. Synced fork master Windows workspace tests passed, with cache post-processing still pending at the time of this update.

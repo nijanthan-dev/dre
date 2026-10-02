@@ -45,10 +45,10 @@ The first attempt was rejected by GitHub YAML validation before any build becaus
 
 Six initial fully parallel uncached samples all passed, but GitHub assigned different CPU models. Their comparison validation rejected the hardware mismatch. Those measurements are retained as exploratory evidence; the three same-VM pairs above are the final controlled comparison. No failing benchmark was silently discarded.
 
-Upstream advanced during measurement. Fork master and the implementation worktree/branch were updated to upstream c9d9f3795e169adf858b05279c5125898809951f. PR #81 head bac330813a6745c9c6300c4c1d8b29241bf37690 passed every CI job and has approval from allenhori. The benchmark commits stayed pinned to isolate the issue change. Later upstream changes to CI cache policy and line-tables-only debug settings are not part of these measurements, so the numbers are not a benchmark of the newly merged head against current upstream.
+Upstream advanced during measurement. Fork master and the implementation worktree/branch were updated to upstream 5f57dae77b9aa66ca1f9175983de8ca2b76ba30a. PR #81 head 902feb31746d81cc4993e8fc36daaf42711707d2 has approval from allenhori. Latest Ubuntu, macOS, lint, service integration, schema docs, plugin versions, and Skills jobs passed. Windows failed in the unchanged plugin_sources localhost fixture with Peer disconnected; all DuckDB helper tests passed. One rerun request was rejected by the upstream integration with HTTP 403, so an authorized mobile rerun remains required. The benchmark commits stayed pinned to isolate the issue change. Later upstream changes to CI cache policy, line-tables-only debug settings, and plugin-manager optimization are not part of these measurements, so the numbers are not a benchmark of the newly merged head against current upstream.
 
-PR CI: https://github.com/get-dre/dre/actions/runs/37015614019
-PR Skills: https://github.com/get-dre/dre/actions/runs/37015614020
+PR CI: https://github.com/get-dre/dre/actions/runs/37019915464
+PR Skills: https://github.com/get-dre/dre/actions/runs/37019914774
 
 The targeted libduckdb-sys debug override also enables native NDEBUG in development/tests. Release behavior remains unchanged. This tradeoff is documented and was accepted in maintainer review.
 
