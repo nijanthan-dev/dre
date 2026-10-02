@@ -114,9 +114,11 @@ Local service-backed tests retain their existing environment gates. Real warehou
 credentials and external emulator services were not configured locally; GitHub's
 existing integration job and full OS matrix subsequently passed.
 
-Independent Actionbook Rust, Principal Engineer Architect, and Code Simplifier
-reviews completed with no remaining blocking findings. The profile's NDEBUG
-consequence and existing local plugin-build fallback were explicitly reviewed.
+Fresh Actionbook Rust, Principal Engineer Architect, and Code Simplifier reviews
+completed with no blocking findings. Their review refinements were applied: all
+Rust caches use a new prefix after the profile change, the staging-failure test has
+an accurate name, and one-off measurements moved out of the durable helper README.
+The profile's NDEBUG consequence and local plugin-build fallback were also reviewed.
 
 ### Risks and compatibility
 
@@ -134,8 +136,8 @@ Upstream and fork default branches are named master, not main. This PR targets
 get-dre/dre:master from nijanthan-dev:fix/74-duckdb-test-helper, originally based on
 8970f305d3ce5be284bdf69fc1c708ca279a18c1 and now merged with upstream
 5f57dae77b9aa66ca1f9175983de8ca2b76ba30a. Fork/master matches that latest upstream
-SHA. Current task head is 3e14b636c5e05ff0d5e0108594d2c2b27a71bcae. Maintainer @allenhori approved the helper boundary. The recorded acceptance
-limitations remain explicit. An initial Windows job failed while the source-transition test downloaded a full compiled fixture from its localhost server. That test never executes the payload, while another test retains the real fixture download and execution coverage. It now uses a small stand-in and preserves the GitHub-to-local-to-GitHub lockfile assertions. Fresh Ubuntu, macOS, Windows, strict lint, service integration, schema docs, plugin versions, Skills, and CLA checks passed. CI run: https://github.com/get-dre/dre/actions/runs/37025977867. Skills run: https://github.com/get-dre/dre/actions/runs/37025977771. @allenhori approved the PR. No blocking review threads remain.
+SHA. Current task head is 1392cc5d3a0a3e1c4f4444a65f0bacef82350d80. The recorded acceptance
+limitations remain explicit. An initial Windows job failed while the source-transition test downloaded a full compiled fixture from its localhost server. That test never executes the payload, while another test retains the real fixture download and execution coverage. It now uses a small stand-in and preserves the GitHub-to-local-to-GitHub lockfile assertions. Fresh Ubuntu, macOS, Windows, strict lint, service integration, schema docs, plugin versions, and Skills checks passed. CI run: https://github.com/get-dre/dre/actions/runs/37031693509. Skills run: https://github.com/get-dre/dre/actions/runs/37031693730. @allenhori approved the helper boundary on an earlier head. GitHub dismissed that approval after the review commits; the integration returned HTTP 403 when re-requesting review, so final maintainer re-review remains required. No blocking review threads remain.
 
 ## Checklist
 
@@ -143,7 +145,7 @@ limitations remain explicit. An initial Windows job failed while the source-tran
 - [x] Tests added without merging or weakening existing suites
 - [x] Formatting and strict workspace Clippy pass with the commands above
 - [x] Workspace tests pass with the documented prebuilt-binary path
-- [x] Developer documentation and measurements added in tests/duckdb-seed/README.md; no end-user behavior changed
+- [x] Durable helper design and commands documented in tests/duckdb-seed/README.md; measurements recorded in this PR description
 - [x] Plugin version bump: n/a, no plugin source or release behavior changed
 - [x] Existing CLA signature confirmed by the upstream CLA check; no new signature made by this task
 
