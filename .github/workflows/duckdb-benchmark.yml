@@ -28,11 +28,6 @@ jobs:
       BENCH_VARIANT: ${{ matrix.variant }}
       BENCH_SAMPLE: ${{ matrix.sample }}
       BENCH_SHA: ${{ matrix.sha }}
-      CARGO_TARGET_DIR: ${{ runner.temp }}/dre-74-benchmark-target
-      CARGO_HOME: ${{ runner.temp }}/dre-74-benchmark-cargo
-      GOCACHE: ${{ runner.temp }}/dre-74-benchmark-go-cache
-      GOMODCACHE: ${{ runner.temp }}/dre-74-benchmark-go-modules
-      DRE_TEST_GO_PLUGINS: ${{ runner.temp }}/dre-74-benchmark-go-plugins
     steps:
       - uses: actions/checkout@v7
         with:
@@ -42,6 +37,16 @@ jobs:
           repository: nijanthan-dev/dre
           ref: ${{ matrix.sha }}
           path: source
+      - name: Set isolated cache and target paths
+        run: |
+          python3 - <<'PYENV'
+          import os
+          from pathlib import Path
+          names = {'CARGO_TARGET_DIR': 'target', 'CARGO_HOME': 'cargo', 'GOCACHE': 'go-cache', 'GOMODCACHE': 'go-modules', 'DRE_TEST_GO_PLUGINS': 'go-plugins'}
+          with open(os.environ['GITHUB_ENV'], 'a') as stream:
+              for key, suffix in names.items():
+                  stream.write(f"{key}={Path(os.environ['RUNNER_TEMP']) / ('dre-74-benchmark-' + suffix)}\n")
+          PYENV
       - uses: dtolnay/rust-toolchain@1.99.0
       - uses: actions/setup-go@v7
         with:
