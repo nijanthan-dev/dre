@@ -134,8 +134,8 @@ Upstream and fork default branches are named master, not main. This PR targets
 get-dre/dre:master from nijanthan-dev:fix/74-duckdb-test-helper, originally based on
 8970f305d3ce5be284bdf69fc1c708ca279a18c1 and now merged with upstream
 5f57dae77b9aa66ca1f9175983de8ca2b76ba30a. Fork/master matches that latest upstream
-SHA. Current task head is 902feb31746d81cc4993e8fc36daaf42711707d2. Maintainer @allenhori approved the helper boundary. The recorded acceptance
-limitations remain explicit. Latest Ubuntu, macOS, strict lint, service integration, schema docs, plugin versions, Skills, and CLA checks passed. Windows failed in the unchanged plugin_sources localhost fixture with Peer disconnected; its DuckDB helper tests passed. The attempted upstream Windows rerun was rejected with HTTP 403 and requires an authorized mobile rerun. Previous merged head bac330813a6745c9c6300c4c1d8b29241bf37690 passed every CI job. CI run: https://github.com/get-dre/dre/actions/runs/37019915464. Skills run: https://github.com/get-dre/dre/actions/runs/37019914774. @allenhori approved the PR. No blocking review threads remain.
+SHA. Current task head is 3e14b636c5e05ff0d5e0108594d2c2b27a71bcae. Maintainer @allenhori approved the helper boundary. The recorded acceptance
+limitations remain explicit. An initial Windows job failed while the source-transition test downloaded a full compiled fixture from its localhost server. That test never executes the payload, while another test retains the real fixture download and execution coverage. It now uses a small stand-in and preserves the GitHub-to-local-to-GitHub lockfile assertions. Fresh Ubuntu, macOS, Windows, strict lint, service integration, schema docs, plugin versions, Skills, and CLA checks passed. CI run: https://github.com/get-dre/dre/actions/runs/37025977867. Skills run: https://github.com/get-dre/dre/actions/runs/37025977771. @allenhori approved the PR. No blocking review threads remain.
 
 ## Checklist
 
@@ -147,4 +147,4 @@ limitations remain explicit. Latest Ubuntu, macOS, strict lint, service integrat
 - [x] Plugin version bump: n/a, no plugin source or release behavior changed
 - [x] Existing CLA signature confirmed by the upstream CLA check; no new signature made by this task
 
-Previous merged-head Ubuntu CI reported 473 passing tests, zero failures, and zero ignored tests. Latest PR Ubuntu and macOS workspace tests passed; latest Windows requires a rerun as described above. Synced fork master Windows workspace tests passed, with cache post-processing still pending at the time of this update.
+Fresh PR workspace tests passed on Ubuntu, macOS, and Windows. The synced fork master CI also passed on all three operating systems.
