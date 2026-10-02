@@ -108,11 +108,11 @@ cargo test -p dre-cli --locked --test compile --test duckdb_seed --test lookups 
 - `git diff --check`: passed.
 - `go build`: passed for the Databricks binary.
 - `go vet ./...`: passed.
-- `go test ./...`: failed locally in unchanged `TestAnUnreachableWorkspaceFailsAtOnce`. Earlier tests cache the runner's proxy configuration before that test clears HTTPS_PROXY. The same test passed in isolation with `go test -count=1 -run '^TestAnUnreachableWorkspaceFailsAtOnce$' ./...`. Go files are unchanged; the normal CI runner should verify the full Go command.
+- `go test ./...`: failed locally in unchanged `TestAnUnreachableWorkspaceFailsAtOnce`. Earlier tests cache the runner's proxy configuration before that test clears HTTPS_PROXY. The same test passed in isolation with `go test -count=1 -run '^TestAnUnreachableWorkspaceFailsAtOnce$' ./...`. Go files are unchanged; the full Go command subsequently passed in GitHub CI and in every controlled benchmark sample.
 
 Local service-backed tests retain their existing environment gates. Real warehouse
 credentials and external emulator services were not configured locally; GitHub's
-existing integration job and OS matrix remain required validation.
+existing integration job and full OS matrix subsequently passed.
 
 Independent Actionbook Rust, Principal Engineer Architect, and Code Simplifier
 reviews completed with no remaining blocking findings. The profile's NDEBUG
