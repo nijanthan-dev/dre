@@ -1,3 +1,5 @@
+> **Depends on #79. Merge #79 before this PR.**
+
 ## What this changes
 
 Closes #74. CLI integration tests previously seeded databases in-process through the
@@ -135,9 +137,24 @@ plugin protocol, package versions, and release profile are unchanged.
 Upstream and fork default branches are named master, not main. This PR targets
 get-dre/dre:master from nijanthan-dev:fix/74-duckdb-test-helper, originally based on
 8970f305d3ce5be284bdf69fc1c708ca279a18c1 and now merged with upstream
-5f57dae77b9aa66ca1f9175983de8ca2b76ba30a. Fork/master matches that latest upstream
-SHA. Current task head is 1392cc5d3a0a3e1c4f4444a65f0bacef82350d80. The recorded acceptance
-limitations remain explicit. An initial Windows job failed while the source-transition test downloaded a full compiled fixture from its localhost server. That test never executes the payload, while another test retains the real fixture download and execution coverage. It now uses a small stand-in and preserves the GitHub-to-local-to-GitHub lockfile assertions. Fresh Ubuntu, macOS, Windows, strict lint, service integration, schema docs, plugin versions, and Skills checks passed. CI run: https://github.com/get-dre/dre/actions/runs/37031693509. Skills run: https://github.com/get-dre/dre/actions/runs/37031693730. @allenhori approved the helper boundary on an earlier head. GitHub dismissed that approval after the review commits; the integration returned HTTP 403 when re-requesting review, so final maintainer re-review remains required. No blocking review threads remain.
+04127f8a339dadcafddcb965f25763a138dc4966. Fork/master matches that latest upstream
+SHA. Current task head is 6627428d4226db3ab6b80cae665f104dbcf9008d. PR #79 must
+be merged first; it remains open and conflicted as of this update. The recorded
+acceptance limitations remain explicit. An initial Windows job failed while the
+source-transition test downloaded a full compiled fixture from its localhost server.
+That test never executes the payload, while another test retains the real fixture
+download and execution coverage. It now uses a small stand-in and preserves the
+GitHub-to-local-to-GitHub lockfile assertions. Fresh Ubuntu, macOS, Windows, strict
+lint, service integration, schema docs, plugin versions, and Skills checks passed
+on the prior reviewed head. The latest upstream-sync CI and Skills workflows also
+passed in full: https://github.com/get-dre/dre/actions/runs/37110300025 and
+https://github.com/get-dre/dre/actions/runs/37110300016. After that merge, clean
+workspace binaries and the full workspace test suite passed locally. Direct reruns
+also passed all three CLI helper-diagnostic tests, all nine plugin-source tests, and
+all six helper process tests. @allenhori approved the helper boundary on an earlier
+head. GitHub dismissed that approval after the review commits; the integration
+returned HTTP 403 when re-requesting review, so final maintainer re-review remains
+required. No blocking review threads remain.
 
 ## Checklist
 

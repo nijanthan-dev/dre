@@ -1,5 +1,7 @@
 # Issue 74 uncached Ubuntu comparison
 
+PR #81 depends on PR #79 and must be merged after it.
+
 Run: https://github.com/nijanthan-dev/dre/actions/runs/37014716840
 
 Baseline: `8970f305d3ce5be284bdf69fc1c708ca279a18c1`. Implementation: `f5c642c41fc944f4f9c451d579dca2346b37abde`.
@@ -45,10 +47,32 @@ The first attempt was rejected by GitHub YAML validation before any build becaus
 
 Six initial fully parallel uncached samples all passed, but GitHub assigned different CPU models. Their comparison validation rejected the hardware mismatch. Those measurements are retained as exploratory evidence; the three same-VM pairs above are the final controlled comparison. No failing benchmark was silently discarded.
 
-Upstream advanced during measurement. Fork master and the implementation worktree/branch were updated to upstream 5f57dae77b9aa66ca1f9175983de8ca2b76ba30a. PR #81 head 1392cc5d3a0a3e1c4f4444a65f0bacef82350d80 completed fresh Actionbook Rust, Principal Engineer Architect, and Code Simplifier reviews with no blocking findings. Their cache-prefix, test-name, and durable-documentation refinements were applied. An initial Windows job failed while the source-transition test downloaded a full compiled fixture from its localhost server. That test never executes the payload, while another test retains the real fixture download and execution coverage. It now uses a small stand-in and preserves the GitHub-to-local-to-GitHub lockfile assertions. The fresh Ubuntu, macOS, Windows, lint, service integration, schema docs, plugin versions, and Skills jobs all passed. @allenhori approved an earlier head, but GitHub dismissed that approval after the review commits; final maintainer re-review remains required. The benchmark commits stayed pinned to isolate the issue change. Later upstream changes to CI cache policy, line-tables-only debug settings, and plugin-manager optimization are not part of these measurements, so the numbers are not a benchmark of the newly merged head against current upstream.
+Upstream advanced during measurement. Fork master and the implementation
+worktree/branch were updated to upstream
+04127f8a339dadcafddcb965f25763a138dc4966. PR #81 head
+6627428d4226db3ab6b80cae665f104dbcf9008d includes that upstream merge. PR #79
+must merge first and remains open and conflicted as of this update. PR #81 completed
+fresh Actionbook Rust, Principal Engineer Architect, and Code Simplifier reviews
+with no blocking findings. Their cache-prefix, test-name, and durable-documentation
+refinements were applied. An initial Windows job failed while the source-transition
+test downloaded a full compiled fixture from its localhost server. That test never
+executes the payload, while another test retains the real fixture download and
+execution coverage. It now uses a small stand-in and preserves the
+GitHub-to-local-to-GitHub lockfile assertions. The fresh Ubuntu, macOS, Windows,
+lint, service integration, schema docs, plugin versions, and Skills jobs all passed
+on the prior reviewed head. The latest upstream-sync CI and Skills workflows also
+passed in full. Clean local workspace binaries and the full workspace test suite
+passed after the merge, as did direct reruns of all CLI helper-diagnostic,
+plugin-source, and helper process tests. @allenhori approved an earlier head, but
+GitHub dismissed that approval after the review commits; final maintainer re-review
+remains required. The benchmark commits stayed pinned to isolate the issue change.
+Later upstream changes to CI cache policy, line-tables-only debug settings,
+plugin-manager optimization, release 0.1.2, and scheduling are not part of these
+measurements, so the numbers are not a benchmark of the newly merged head against
+current upstream.
 
-PR CI: https://github.com/get-dre/dre/actions/runs/37031693509
-PR Skills: https://github.com/get-dre/dre/actions/runs/37031693730
+PR CI: https://github.com/get-dre/dre/actions/runs/37110300025
+PR Skills: https://github.com/get-dre/dre/actions/runs/37110300016
 
 The targeted libduckdb-sys debug override also enables native NDEBUG in development/tests. Release behavior remains unchanged. This tradeoff is documented and was accepted in maintainer review.
 
