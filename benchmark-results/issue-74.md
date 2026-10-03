@@ -1,6 +1,6 @@
 # Issue 74 uncached Ubuntu comparison
 
-PR #81 depends on PR #79 and must be merged after it.
+PR #79 merged first and is included in PR #81 through upstream master at `a6764e3`.
 
 Run: https://github.com/nijanthan-dev/dre/actions/runs/37014716840
 
@@ -49,9 +49,9 @@ Six initial fully parallel uncached samples all passed, but GitHub assigned diff
 
 Upstream advanced during measurement. Fork master and the implementation
 worktree/branch were updated to upstream
-04127f8a339dadcafddcb965f25763a138dc4966. PR #81 head
-6627428d4226db3ab6b80cae665f104dbcf9008d includes that upstream merge. PR #79
-must merge first and remains open and conflicted as of this update. PR #81 completed
+a6764e3f9a2126590902eb547b1f7bab9fbfd030. PR #81 head
+56c6ec96b2758336bfbd822bf8fbf42136b3468d includes that upstream merge. PR #79
+merged first, and its files are absent from PR #81's focused 13-file diff. PR #81 completed
 fresh Actionbook Rust, Principal Engineer Architect, and Code Simplifier reviews
 with no blocking findings. Their cache-prefix, test-name, and durable-documentation
 refinements were applied. An initial Windows job failed while the source-transition
@@ -71,8 +71,10 @@ plugin-manager optimization, release 0.1.2, and scheduling are not part of these
 measurements, so the numbers are not a benchmark of the newly merged head against
 current upstream.
 
-PR CI: https://github.com/get-dre/dre/actions/runs/37110300025
-PR Skills: https://github.com/get-dre/dre/actions/runs/37110300016
+Final-head PR CI: https://github.com/get-dre/dre/actions/runs/37117496856
+Final-head PR Skills: https://github.com/get-dre/dre/actions/runs/37117496858
+
+Both final-head workflows completed successfully across every job.
 
 The targeted libduckdb-sys debug override also enables native NDEBUG in development/tests. Release behavior remains unchanged. This tradeoff is documented and was accepted in maintainer review.
 

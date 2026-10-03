@@ -1,4 +1,4 @@
-> **Depends on #79. Merge #79 before this PR.**
+> **PR #79 merged first and is included through upstream `master` at `a6764e3`.**
 
 ## What this changes
 
@@ -99,7 +99,7 @@ and `CARGO_BUILD_JOBS=4`. Runtime tests used the repository's documented
 - `cargo fmt --all -- --check`: passed.
 - `cargo clippy --workspace --all-targets --locked -- -D warnings`: passed after fixing the documentation warning.
 - `cargo build --workspace --bins --locked`: passed, 31.0s.
-- `cargo test --workspace --locked`: passed, 463 reported passing tests, no failures or ignored tests, 3m31s.
+- `cargo test --workspace --locked`: passed with the documented prebuilt-binary path, no failures.
 - Direct affected CLI suites: passed, 155 tests in 19 suites, 56.1s. Exact command:
 
 ```sh
@@ -110,7 +110,7 @@ cargo test -p dre-cli --locked --test compile --test duckdb_seed --test lookups 
 - `git diff --check`: passed.
 - `go build`: passed for the Databricks binary.
 - `go vet ./...`: passed.
-- `go test ./...`: failed locally in unchanged `TestAnUnreachableWorkspaceFailsAtOnce`. Earlier tests cache the runner's proxy configuration before that test clears HTTPS_PROXY. The same test passed in isolation with `go test -count=1 -run '^TestAnUnreachableWorkspaceFailsAtOnce$' ./...`. Go files are unchanged; the full Go command subsequently passed in GitHub CI and in every controlled benchmark sample.
+- `go test -count=1 ./...`: passed on the final head after clearing both uppercase and lowercase proxy variables, 6.37s. Go files are unchanged.
 
 Local service-backed tests retain their existing environment gates. Real warehouse
 credentials and external emulator services were not configured locally; GitHub's
@@ -137,21 +137,22 @@ plugin protocol, package versions, and release profile are unchanged.
 Upstream and fork default branches are named master, not main. This PR targets
 get-dre/dre:master from nijanthan-dev:fix/74-duckdb-test-helper, originally based on
 8970f305d3ce5be284bdf69fc1c708ca279a18c1 and now merged with upstream
-04127f8a339dadcafddcb965f25763a138dc4966. Fork/master matches that latest upstream
-SHA. Current task head is 6627428d4226db3ab6b80cae665f104dbcf9008d. PR #79 must
-be merged first; it remains open and conflicted as of this update. The recorded
-acceptance limitations remain explicit. An initial Windows job failed while the
-source-transition test downloaded a full compiled fixture from its localhost server.
+a6764e3f9a2126590902eb547b1f7bab9fbfd030. Fork/master matches that latest upstream
+SHA. Current task head is 56c6ec96b2758336bfbd822bf8fbf42136b3468d. PR #79 merged
+first and is included through upstream master, so its files are absent from this
+focused 13-file diff. The recorded acceptance limitations remain explicit. An initial
+Windows job failed while the source-transition test downloaded a full compiled fixture
+from its localhost server.
 That test never executes the payload, while another test retains the real fixture
 download and execution coverage. It now uses a small stand-in and preserves the
 GitHub-to-local-to-GitHub lockfile assertions. Fresh Ubuntu, macOS, Windows, strict
 lint, service integration, schema docs, plugin versions, and Skills checks passed
-on the prior reviewed head. The latest upstream-sync CI and Skills workflows also
-passed in full: https://github.com/get-dre/dre/actions/runs/37110300025 and
-https://github.com/get-dre/dre/actions/runs/37110300016. After that merge, clean
-workspace binaries and the full workspace test suite passed locally. Direct reruns
-also passed all three CLI helper-diagnostic tests, all nine plugin-source tests, and
-all six helper process tests. @allenhori approved the helper boundary on an earlier
+on the prior reviewed head. Final-head CI and Skills runs are
+https://github.com/get-dre/dre/actions/runs/37117496856 and
+https://github.com/get-dre/dre/actions/runs/37117496858; both passed in full. After the PR #79 merge,
+strict Clippy, the full workspace test suite, and the complete Go module passed
+locally. Direct reruns also passed all three CLI helper-diagnostic tests, all nine
+plugin-source tests, and all six helper process tests. @allenhori approved the helper boundary on an earlier
 head. GitHub dismissed that approval after the review commits; the integration
 returned HTTP 403 when re-requesting review, so final maintainer re-review remains
 required. No blocking review threads remain.
